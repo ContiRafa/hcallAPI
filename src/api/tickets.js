@@ -56,14 +56,15 @@ async function getTickets() {
  * @returns {Promise<Object>} - Contagem de tickets
  * @throws {Error} - Erro caso a requisição falhe
  */
-async function countTickets() {
+async function countTickets(filters = {}) {
   try {
-    const response = await api.get('/ticket/count');
+    const response = await api.get('/ticket/count', { params: filters });
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data?.message || 'Erro ao contar tickets');
   }
 }
+
 
 /**
  * Função para buscar os detalhes de um ticket
@@ -209,6 +210,7 @@ async function fetchTicketData(ticketId) {
     throw error; // Rejeita a promise com o erro para tratamento externo
   }
 }
+
 
 // Exporta as funções para uso em outros arquivos
 export {

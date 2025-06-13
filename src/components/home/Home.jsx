@@ -4,6 +4,8 @@ import { MdFormatListBulleted, MdOutlineNewReleases, MdPendingActions, MdTaskAlt
 import './Home.css'
 import Tickets from '../tickets/Tickets';
 import { getTickets, countTickets } from '../../api/tickets';
+// import Grafico from '../grafico/grafico';
+
 
 const Home = () => {
     const navigate = useNavigate()
@@ -126,7 +128,12 @@ const Home = () => {
                     </div>
                 </button>
             </div>
+
+            {/* <div className="grafico">
+                <Grafico />
+            </div> */}
         </div>
+        
     )
 }
 

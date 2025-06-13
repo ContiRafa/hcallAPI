@@ -120,6 +120,62 @@ const ViewTickets = ({ ticketId, onClose }) => {
     }, [ticket]);
 
 
+    //---------------------------------------Download das imagens-----------------------------//
+    const baixarImagens = async () => {
+        try {
+            if (!images.length) throw new Error('Nenhuma imagem disponível para download.');
+
+            images.forEach((img, index) => {
+                if (!img.base64) return;
+
+                const parsed = parseBase64(img.base64, index);
+                if (!parsed) return;
+
+                const blob = criarBlob(parsed.content, parsed.type);
+                iniciarDownload(blob, parsed.name || `imagem_${index}`);
+            });
+
+        } catch (error) {
+            console.error('Erro ao baixar imagens:', error);
+            alert(error.message);
+        }
+    };
+
+    // Função auxiliar para parsear a base64 com tratamento de erro
+    const parseBase64 = (base64String, index) => {
+        try {
+            return JSON.parse(base64String);
+        } catch {
+            console.error(`Erro ao fazer parse da imagem na posição ${index}`);
+            return null;
+        }
+    };
+
+    // Função auxiliar para criar um Blob a partir de uma string base64
+    const criarBlob = (base64Content, mimeType = 'image/jpeg') => {
+        const byteChars = atob(base64Content);
+        const byteArray = Uint8Array.from(byteChars, char => char.charCodeAt(0));
+        return new Blob([byteArray], { type: mimeType });
+    };
+
+    // Função auxiliar para criar e disparar o download
+    const iniciarDownload = (blob, fileName) => {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+
+        link.href = url;
+        link.download = fileName;
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        URL.revokeObjectURL(url);
+    };
+
+
+
+
 
     //----------------------------------------------------------------------------------//
 
@@ -256,6 +312,12 @@ const ViewTickets = ({ ticketId, onClose }) => {
                         return null;
                     }
                 })}
+            </div>
+
+            <div className="botaoDownload">
+                <button className="btn-download" onClick={baixarImagens}>
+                    Baixar Imagens
+                </button>
             </div>
 
 

@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ignorar o componente de gráfico
+src/components/grafico/grafico.jsx
+src/components/grafico/grafico.css
