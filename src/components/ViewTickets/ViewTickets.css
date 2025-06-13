@@ -22,6 +22,7 @@
 .campoAnotacao {
     width: 500px;
     height: 100px;
+    resize: none;
 }
 
 .anotacoesChamado {
@@ -159,6 +160,21 @@
     padding: 20px;
 }
 
+.imagem-exibida {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.imagesBlock {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .images-grid {
     display: flex;
     grid-template-columns: repeat(3, 1fr);
@@ -189,6 +205,8 @@
     padding: 20px;
     height: 100%;
     width: 100%;
+    overflow-y: auto;
+    height: 300px;
 }
 
 .updates-block h3 {
@@ -200,13 +218,12 @@
 #update-list {
     max-height: 300px;
     /* altura estimada para cerca de 10 anotações */
-    overflow-y: auto;
-    /* ativa a barra de rolagem vertical se passar da altura */
 }
 
-.update-item{
+.update-item {
     display: flex;
-    
+    overflow-y: auto;
+
 }
 
 
@@ -270,7 +287,7 @@
     color: white;
 }
 
-.action-button.adicionar{
+.action-button.adicionar {
     background-color: #388e3c;
     color: white;
 }

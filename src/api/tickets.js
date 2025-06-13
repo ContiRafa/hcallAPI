@@ -48,7 +48,7 @@ async function getTickets() {
   } catch (error) {
     throw new Error(error.response?.data?.message || 'Erro ao buscar tickets');
   }
-  
+
 }
 
 /**
@@ -180,15 +180,35 @@ const handleConcluirTicket = async (ticket) => {
   }
 };
 
-// async function baixarAnexo(id_Anexo) {
-//   try {
-//     const response = await api.get(`/ticket/attatchmens/${id_Anexo}/download`);
-//     return response.data;
-//   } catch (error) {
-//     throw new Error(error.response?.data?.message || 'Erro ao fazer download');
-//   }
-  
-// }
+
+//----------------------------------------------------------------------------------------------------------------------------//
+
+/**
+ * Endpoint para buscar todos os dados do ticket em formato JSON
+ * @param {string} ticketId - ID do ticket relacionado aos dados
+ * @returns {Promise<Object>} - Objeto contendo todos os dados do ticket em JSON
+ * @throws {Error} - Erro caso o ID seja inválido ou a requisição falhe
+ */
+async function fetchTicketData(ticketId) {
+  try {
+    // 1. Faz a requisição para a API que retorna os detalhes do ticket
+    const response = await api.get('/ticket/details', {
+      params: { id: ticketId }
+    });
+
+    // 2. Verifica se a resposta contém dados válidos
+    if (!response.data) {
+      throw new Error('Nenhum dado encontrado para o ticket especificado');
+    }
+
+    // 3. Retorna todos os dados em formato JSON
+    return response.data;
+
+  } catch (error) {
+    console.error('Erro ao buscar dados do ticket:', error);
+    throw error; // Rejeita a promise com o erro para tratamento externo
+  }
+}
 
 // Exporta as funções para uso em outros arquivos
 export {
@@ -198,6 +218,6 @@ export {
   formatarData,
   addAnotacao,
   handleConcluirTicket,
-  handleIniciarTicket
-  // baixarAnexo // <-- Adicionando a nova função às exportações
+  handleIniciarTicket,
+  fetchTicketData
 };

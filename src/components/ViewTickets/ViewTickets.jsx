@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ViewTickets.css';
 import { getTicketDetails, addAnotacao, handleConcluirTicket } from '../../api/tickets';
 import { handleIniciarTicket } from '../../api/tickets';
-// import { baixarAnexo } from '../../api/tickets';
-// import { Download } from 'lucide-react';
+import { fetchTicketData } from '../../api/tickets';
 
 const ViewTickets = ({ ticketId, onClose }) => {
     const [ticket, setTicket] = useState(null);
@@ -11,6 +10,7 @@ const ViewTickets = ({ ticketId, onClose }) => {
     const [error, setError] = useState(null);
     const [updates, setUpdates] = useState([]);
     const [noteText, setNoteText] = useState('');
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         const fetchTicketData = async () => {
@@ -22,7 +22,6 @@ const ViewTickets = ({ ticketId, onClose }) => {
                 console.log("Dados completos do ticket:", ticketData.data.ticket);
                 setTicket(ticketData.data.ticket);
 
-                // ATUALIZAÇÃO AQUI - Agora pegamos as anotações de history
                 if (ticketData.data.ticket.history) {
                     setUpdates(ticketData.data.ticket.history.map(item => ({
                         date: item.date,
@@ -74,7 +73,7 @@ const ViewTickets = ({ ticketId, onClose }) => {
         }
     };
 
-    
+
     //-----------------------------------------------------------------------------------//
 
     const handleClickIniciar = async () => {
@@ -99,6 +98,31 @@ const ViewTickets = ({ ticketId, onClose }) => {
         }
     };
 
+    //-----------------------------------------------------------------------------------------------//
+
+    //-------------------------------PEGA AS IMAGENS DO TICKET---------------------------------//
+    useEffect(() => {
+        if (!ticket?.id) return;
+
+        const fetchImages = async () => {
+            try {
+                const { data } = await fetchTicketData(ticket.id);
+                const images = data?.ticket?.images ?? [];
+                setImages(images.length ? images : []);
+                console.log('Imagens recebidas:', images);
+            } catch (err) {
+                console.error('Erro ao buscar imagens do ticket:', err);
+                setError('Falha ao carregar as imagens do ticket');
+            }
+        };
+
+        fetchImages();
+    }, [ticket]);
+
+
+
+    //----------------------------------------------------------------------------------//
+
     const handleClickConcluir = async () => {
         try {
             if (!ticket || ticket.tickt_status !== 'doing') {
@@ -114,9 +138,6 @@ const ViewTickets = ({ ticketId, onClose }) => {
                     tickt_status: 'completed' // Garantindo o status correto
                 });
                 alert('Ticket concluído com sucesso!');
-
-                // Opcional: fecha o modal após conclusão
-                // onClose();
             }
         } catch (error) {
             console.error('Erro ao concluir ticket:', error);
@@ -163,6 +184,8 @@ const ViewTickets = ({ ticketId, onClose }) => {
         );
     }
 
+
+
     return (
         <div className="view-ticket-content">
             <div className="ticket-header">
@@ -208,19 +231,33 @@ const ViewTickets = ({ ticketId, onClose }) => {
                             <span className="status-badge">{ticket.tickt_status}</span>
                         </div>
                     </div>
-
-                    {/* <div className="images-block">
-                        <div className="containerDownload">
-                            <div className="btn-baixar">
-                                <button onClick={baixarAnexo}>
-                                    Baixar
-
-                                </button>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
+
+            <div className="imagesBlock">
+                {images.map((img, index) => {
+                    if (!img.base64) {
+                        console.warn(`Imagem na posição ${index} sem base64`);
+                        return null;
+                    }
+
+                    try {
+                        const { content, type = 'image/jpeg' } = JSON.parse(img.base64);
+                        return (
+                            <img
+                                key={index}
+                                src={`data:${type};base64,${content}`}
+                                alt={`Imagem ${index}`}
+                                className="imagem-exibida"
+                            />
+                        );
+                    } catch (err) {
+                        console.error('Erro ao fazer parse do base64 da imagem:', err);
+                        return null;
+                    }
+                })}
+            </div>
+
 
             <div className="anotacoesChamado">
                 <div className="description-container">
@@ -232,6 +269,8 @@ const ViewTickets = ({ ticketId, onClose }) => {
                                 value={noteText}
                                 onChange={(e) => setNoteText(e.target.value)}
                                 placeholder="Digite sua anotação aqui..."
+                                rows={10}
+                                cols={50}
                             />
                         </div>
                         <div className="buttons-container">
