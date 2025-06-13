@@ -1,1 +1,1 @@
-# ESSA VERSÃO CONTÉM O BOTÃO DE BAIXAR IMAGEM COMITADO, SEM FUNCIONAR, E O GRID DAS IMAGENS TÁMBEM ESTÁ COMITADA !!
+Imagens sendo exibidas, e uma correção no textarea das anotações
