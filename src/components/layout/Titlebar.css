@@ -1,0 +1,43 @@
+.titlebar {
+    background-color: #151D1F;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header-logout {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 20px;
+}
+
+.header-logout button {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-logout button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+@media (max-width: 768px) {
+    .header-items {
+        margin-left: 0;
+    }
+}

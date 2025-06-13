@@ -1,0 +1,29 @@
+// Estado para os filtros atuais
+const [filtros, setFiltros] = useState({
+    name: '',
+    author: '',
+    date: '',
+    status: initialFilter || ''
+})
+
+// Manipulador de mudança de filtros
+const handleFiltroChange = (novosFiltros) => {
+    setFiltros(novosFiltros)
+}
+
+// Filtra os tickets baseado nos filtros atuais
+const chamadosFiltrados = chamados.filter(chamado => {
+    if (filtros.name && !chamado.ticket_name.toLowerCase().includes(filtros.name.toLowerCase())) {
+        return false
+    }
+    if (filtros.author && !chamado.ticket_author.toLowerCase().includes(filtros.author.toLowerCase())) {
+        return false
+    }
+    return true
+})
+
+// Componente de filtros no JSX
+<Filters
+    filtros={filtros}
+    onFiltroChange={handleFiltroChange}
+/> 

@@ -1,0 +1,173 @@
+.home-container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.dashboard-container {
+    padding: 20px;
+}
+
+.dashboard-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.dashboard-button {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    gap: 15px;
+}
+
+.button-icon {
+    font-size: 24px;
+}
+
+.button-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.button-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.button-count {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Estilos específicos para cada botão */
+.dashboard-button.all {
+    background-color: #9ed7ff;
+    color: #1565c0;
+}
+
+.dashboard-button.all:hover {
+    background-color: #41aaff;
+}
+
+.dashboard-button.new {
+    background-color: #ffbdc7;
+    color: #c62828;
+}
+
+.dashboard-button.new:hover {
+    background-color: #ff949e;
+}
+
+.dashboard-button.pending {
+    background-color: #ffe5bb;
+    color: #ef6c00;
+}
+
+.dashboard-button.pending:hover {
+    background-color: #f8c77d;
+}
+
+.dashboard-button.completed {
+    background-color: #70ff7c;
+    color: #2e7d32;
+}
+
+.dashboard-button.completed:hover {
+    background-color: #4bff51;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: #333;
+}
+
+.count {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.total-chamados {
+    background-color: #151D1F;
+}
+
+.em-aberto {
+    background-color: #FFFB00;
+}
+
+.em-andamento {
+    background-color: #FF0200;
+}
+
+.concluidos {
+    background-color: #4caf50;
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        margin-left: 0;
+    }
+
+    .dashboard-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stat-card h3 {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin: 0;
+}
+
+.name-title {
+    display: flex;
+}
+
+.name-title h2 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+}

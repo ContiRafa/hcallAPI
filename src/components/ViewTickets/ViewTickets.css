@@ -1,0 +1,325 @@
+.view-ticket-content {
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ticket-header {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.ticket-header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.campoAnotacao {
+    width: 500px;
+    height: 100px;
+}
+
+.anotacoesChamado {
+    display: flex;
+
+}
+
+
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-block {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    /* width: 100%; */
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: 600;
+    color: #666;
+    font-size: 14px;
+}
+
+.value {
+    color: #333;
+    font-size: 14px;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-badge.aberto {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.status-badge.em_andamento {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.status-badge.fechado {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.description-block {
+    background: #f8f9fa;
+    padding: 20px;
+}
+
+.description-block h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.description-text {
+    width: 1000px;
+    /* Garante que o textarea ocupe toda a largura da div */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    text-align: start;
+}
+
+
+.description-text-area {
+    width: 90%;
+    height: 100px;
+}
+
+.description-text:focus {
+    outline: none;
+    border-color: #2196f3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.description-container {
+    width: 50%;
+
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.button-add-description {
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+
+.button-remove-description {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+
+.images-block {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.images-grid {
+    display: flex;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 70%;
+}
+
+.ticket-image {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ticket-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.updates-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.updates-block {
+    background: #f8f9fa;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.updates-block h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#update-list {
+    max-height: 300px;
+    /* altura estimada para cerca de 10 anotações */
+    overflow-y: auto;
+    /* ativa a barra de rolagem vertical se passar da altura */
+}
+
+.update-item{
+    display: flex;
+    
+}
+
+
+.update-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.update-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.update-text {
+    font-size: 14px;
+    color: #333;
+}
+
+.ticket-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.action-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-button.limpar {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.action-button.limpar:hover {
+    background-color: #d5d5d5;
+}
+
+.action-button.enviar {
+    background-color: #2196f3;
+    color: white;
+}
+
+.action-button.enviar:hover {
+    background-color: #1976d2;
+}
+
+.action-button.concluir {
+    background-color: #f44336;
+    color: white;
+}
+
+.action-button.adicionar{
+    background-color: #388e3c;
+    color: white;
+}
+
+.action-button.concluir:hover {
+    background-color: #d32f2f;
+}
+
+@media (max-width: 768px) {
+    .ticket-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .images-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Estilo para o container das imagens */
+.images-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Estilo para cada imagem */
+.ticket-image {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.ticket-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.ticket-image.no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    color: #666;
+    font-style: italic;
+}
