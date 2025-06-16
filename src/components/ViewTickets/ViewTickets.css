@@ -1,3 +1,11 @@
+/*----------------------------VARIÁVEIS DE COR PARA O COMPONENTE DO TICKET----------------------------*/
+
+:root {
+    --cor-de-fundo: #f8f9fa;
+    /*COR ORIGINAL DO BACKGROUND*/
+    /* --cor-de-fundo-claro: #adadad; */
+}
+
 .view-ticket-content {
     padding: 30px;
     background: white;
@@ -20,7 +28,7 @@
 }
 
 .campoAnotacao {
-    width: 500px;
+    width: 400px;
     height: 100px;
     resize: none;
 }
@@ -30,6 +38,11 @@
 
 }
 
+.botaoDownload{
+    margin: 10px 0 10px 0;
+    display: flex;
+    justify-content: flex-start;
+}
 
 
 .info-column {
@@ -39,7 +52,7 @@
 }
 
 .info-block {
-    background: #f8f9fa;
+    background: (var(--cor-de-fundo));
     border-radius: 8px;
     padding: 20px;
     /* width: 100%; */
@@ -91,8 +104,9 @@
 }
 
 .description-block {
-    background: #f8f9fa;
+    background: (var(--cor-de-fundo));
     padding: 20px;
+    width: 90%;
 }
 
 .description-block h3 {
@@ -155,7 +169,7 @@
 }
 
 .images-block {
-    background: #f8f9fa;
+    background: (var(--cor-de-fundo));
     border-radius: 8px;
     padding: 20px;
 }
@@ -201,7 +215,7 @@
 }
 
 .updates-block {
-    background: #f8f9fa;
+    background: (var(--cor-de-fundo));
     padding: 20px;
     height: 100%;
     width: 100%;

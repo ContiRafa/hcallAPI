@@ -6,3 +6,8 @@
 
 * Gráfico informativo dos chamados sendo DESENVOLVIDO AINDA, porém, comitado para novas alterações futuras
 
+//PRINCIPAIS ALTERÇÕES 16/06 :
+
+* INSTALEI O VITE, POIS NÃO ESTAVA NO REACT
+
+* PEQUENAS CORREÇÕES NO CSS
