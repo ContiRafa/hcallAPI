@@ -11,3 +11,9 @@
 * INSTALEI O VITE, POIS NÃO ESTAVA NO REACT
 
 * PEQUENAS CORREÇÕES NO CSS
+
+//PRINCIPAIS ALTERÇÕES 21/06 :
+
+* Gráfico funcionando
+
+* Filtro do Gráfico comentado por enquanto para testes

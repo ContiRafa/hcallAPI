@@ -7,7 +7,7 @@ verificar .env
 
 //PARA ATUALIZAR O STATUS DO TICKET: 
 
-https://kenneth-representations-inline-dennis.trycloudflare.com/api/ticket/protected : METHOD: PATH
+http://191.252.182.22:2020/api/ticket/protected : METHOD: PATH
 
 {
   "id": "23556bff-bb18-4e3b-be10-2ef7308db32a",
@@ -17,7 +17,7 @@ https://kenneth-representations-inline-dennis.trycloudflare.com/api/ticket/prote
 
 //PARA ATUALIZAR AS MENSAGENS: 
 
-https://kenneth-representations-inline-dennis.trycloudflare.com/api/ticket/protected METHOD PUT
+http://191.252.182.22:2020/api/ticket/protected METHOD PUT
 
 BODY: {
   "id": "23556bff-bb18-4e3b-be10-2ef7308db32a",
@@ -26,18 +26,18 @@ BODY: {
 
 //VER usuario ESPECIFICO:
 
-https://kenneth-representations-inline-dennis.trycloudflare.com/api/user/?id=50e993c7-ce95-4996-9970-da83b599abac
+http://191.252.182.22:2020/api/user/?id=50e993c7-ce95-4996-9970-da83b599abac
 
 
 //ver atualização da msg: 
 
-https://kenneth-representations-inline-dennis.trycloudflare.com/api/ticket/details?id=c4c8601c-ba0d-4c0e-b410-27aa98a0c41f
+http://191.252.182.22:2020/api/ticket/details?id=c4c8601c-ba0d-4c0e-b410-27aa98a0c41f
 
 //ver detalhes do ticket especifico:
 
-https://kenneth-representations-inline-dennis.trycloudflare.com/api/ticket/details?id=50e993c7-ce95-4996-9970-da83b599abac
+http://191.252.182.22:2020/api/ticket/details?id=50e993c7-ce95-4996-9970-da83b599abac
 
 
 //PEGAR TODOS OS USUARIOS CADASTRADOS NO SISTEMA:
 
-https://airline-implement-benz-heavily.trycloudflare.com/api/user/all <--
+http://191.252.182.22:2020/api/user/all <--

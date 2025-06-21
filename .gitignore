@@ -23,5 +23,3 @@ dist-ssr
 *.sw?
 
 # Ignorar o componente de gráfico (POR ENQUANTO)
-src/components/grafico/grafico.jsx
-src/components/grafico/grafico.css

@@ -1,0 +1,372 @@
+/* Paleta de cores moderna e vibrante */
+:root {
+  --primary-color: #6a05ad; /* Roxo escuro */
+  --secondary-color: #8338ec; /* Roxo médio */
+  --accent-color: #fb5607; /* Laranja vibrante */
+  --text-dark: #2a0044;
+  --text-light: #f4f2f6;
+  --background-light: #ffffff;
+  --background-dark: #f0e6fa;
+  --border-color: #d1c4e9;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-strong: rgba(0, 0, 0, 0.2);
+}
+
+.graficoTitle { /* <-- Aqui você DEFINE a classe 'graficoTitle' */
+  font-size: 27px  !important; /* Usando !important para garantir que o tamanho da fonte seja aplicado */
+  color: #000000 !important; /* Usando cor diretamente para exemplo */
+  font-family: "Inter", sans-serif;
+  /* ... outras propriedades de estilo ... */
+}
+
+/* Container principal do gráfico */
+.graficoContainer {
+  background: linear-gradient(145deg, var(--background-light), var(--background-dark));
+  border-radius: 16px;
+  box-shadow: 0 8px 20px var(--shadow-strong);
+  padding: 40px;
+  margin: 30px auto;
+  max-width: 950px;
+  font-family: 'Poppins', sans-serif; /* Fonte moderna */
+  color: var(--text-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Título do gráfico */
+.graficoTitle {
+  font-size: 2.2em;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 35px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Filtros --- */
+.filterContainer {
+  margin-bottom: 40px;
+  padding: 25px;
+  background-color: var(--background-light);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+.filterForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 160px;
+}
+
+.filterGroup label {
+  font-size: 0.95em;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.filterGroup input[type="date"] {
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1em;
+  color: var(--text-dark);
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.filterGroup input[type="date"]:hover {
+  border-color: var(--secondary-color);
+}
+
+.filterGroup input[type="date"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(106, 5, 173, 0.2);
+}
+
+.filterActions {
+  display: flex;
+  gap: 15px;
+  align-self: flex-end;
+}
+
+.applyButton,
+.resetButton {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.applyButton {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  box-shadow: 0 4px 8px rgba(106, 5, 173, 0.3);
+}
+
+.applyButton:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(131, 56, 236, 0.4);
+}
+
+.applyButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(106, 5, 173, 0.2);
+}
+
+.resetButton {
+  background-color: #6c757d;
+  color: white;
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.2);
+}
+
+.resetButton:hover {
+  background-color: #5a6268;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(108, 117, 125, 0.3);
+}
+
+.resetButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(108, 117, 125, 0.1);
+}
+
+/* --- Estado de Carregamento --- */
+.loading {
+  text-align: center;
+  padding: 60px;
+  font-size: 1.3em;
+  color: var(--secondary-color);
+  font-style: italic;
+  animation: pulse 1.5s infinite alternate; /* Animação de pulso */
+}
+
+@keyframes pulse {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+/* --- Gráfico de Barras --- */
+.chartWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.chartBars {
+  display: flex;
+  align-items: center;
+  /* Alterado para 'gap' em vez de 'justify-content: space-around' para controlar o espaçamento diretamente */
+  gap: 70px; /* Reduzindo o espaçamento entre as barras */
+  width: 100%;
+  height: 280px;
+  padding: 0 15px; /* Adicionado padding horizontal para não grudar nas bordas */
+  border-bottom: 3px solid var(--border-color);
+  position: relative;
+  justify-content: center;
+}
+
+.barGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  flex-grow: 1; /* Permite que os grupos de barra cresçam e preencham o espaço */
+  width: auto; /* Remove largura fixa para usar flex-grow */
+  max-width: 120px; /* Mantém um limite máximo para barras não ficarem muito largas em telas grandes */
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.barGroup:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.bar {
+  width: 90%; /* Mantém a largura da barra dentro do seu grupo */
+  border-radius: 10px 10px 0 0;
+  transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.3s ease,
+              box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  min-height: 8px;
+}
+
+.barGroup:hover .bar {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.barValue {
+  position: absolute;
+  top: -35px;
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 1em;
+  background-color: var(--background-light);
+  padding: 5px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 11;
+}
+
+.barGroup:hover .barValue {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.barLabel {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: var(--text-dark);
+  text-align: center;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.barGroup:hover .barLabel {
+    opacity: 1;
+    color: var(--secondary-color);
+}
+
+/* --- Legenda do Gráfico --- */
+.chartLegend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-color);
+  width: 100%;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  font-size: 0.95em;
+  color: var(--text-dark);
+  transition: transform 0.2s ease;
+  cursor: default;
+}
+
+.legendItem:hover {
+    transform: translateX(5px);
+}
+
+.legendColor {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  margin-right: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .graficoContainer {
+    padding: 25px;
+    margin: 15px;
+  }
+
+  .graficoTitle {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+  }
+
+  .filterForm {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .filterActions {
+    flex-direction: column;
+    gap: 10px;
+    align-self: stretch;
+  }
+
+  .applyButton, .resetButton {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .chartBars {
+    height: 220px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Reduzindo ainda mais em telas menores */
+    padding: 0 10px;
+  }
+
+  .barGroup {
+    width: 48%;
+    margin-bottom: 25px;
+    max-width: none;
+  }
+
+  .barValue {
+    font-size: 0.9em;
+    top: -20px;
+  }
+
+  .barLabel {
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
+
+  .chartLegend {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+    .graficoContainer {
+        padding: 20px;
+    }
+    .graficoTitle {
+        font-size: 1.6em;
+    }
+    .chartBars {
+        height: 180px;
+        gap: 8px; /* Mais redução em telas muito pequenas */
+    }
+    .barGroup {
+        width: 45%;
+    }
+}
