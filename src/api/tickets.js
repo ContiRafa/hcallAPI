@@ -212,6 +212,7 @@ async function fetchTicketData(ticketId) {
 }
 
 
+
 // Exporta as funções para uso em outros arquivos
 export {
   getTickets,
