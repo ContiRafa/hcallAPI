@@ -23,24 +23,21 @@ function Dashboard() {
     }
 
     const getNomeUsuario = () => {
-        // Primeiro obtemos os dados do usuário armazenados
-        const usuarioString = localStorage.getItem('u');
-        
-        // Se existir, convertemos de string para objeto
-        if (usuarioString) {
-            const usuario = JSON.parse(usuarioString);
-            // Retornamos o nome do usuário (ajuste conforme a estrutura do seu objeto)
-            console.log('Usuário logado:', usuarioLogado ? JSON.parse(usuarioLogado) : 'Nenhum usuário logado');
-            return usuario.nome || usuario.name || 'Usuário';
+        const usuarioLogado = JSON.parse(localStorage.getItem('usuario')); // Converte a string JSON para objeto
+        const nomePadrao = 'Usuário';
+
+        if (usuarioLogado) {
+            console.log('Usuário logado:', usuarioLogado);
+            return usuarioLogado.nome || usuarioLogado.name || nomePadrao;
         }
-        
-        // Caso não encontre, retorna um valor padrão
-        return 'Usuário';
+
+        console.log('Nenhum usuário logado');
+        return nomePadrao;
     };
 
     return (
         <div className="dashboard-page">
-            <Titlebar userName= {getNomeUsuario()} />
+            <Titlebar userName={getNomeUsuario()} />
             <div className="dashboard-content">
                 <Sidebar
                     activeItem={currentComponent}

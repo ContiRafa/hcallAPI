@@ -48,24 +48,16 @@ const Home = () => {
     };
 
     const getNomeUsuario = () => {
-        // 1️⃣ Busca os dados do usuário no localStorage
-        const userData = localStorage.getItem('@authData'); // ou a chave que você usou para salvar
-        
-        // 2️⃣ Se existir, converte de string para objeto
-        if (userData) {
-            try {
-                const parsedData = JSON.parse(userData);
-                
-                // 3️⃣ Retorna o username (se existir) ou um valor padrão
-                return parsedData.user?.username || 'Usuário';
-            } catch (error) {
-                console.error("Erro ao analisar dados do localStorage:", error);
-                return 'Usuário';
-            }
+        const usuarioLogado = JSON.parse(localStorage.getItem('usuario')); // Converte a string JSON para objeto
+        const nomePadrao = 'Usuário';
+
+        if (usuarioLogado) {
+            console.log('Usuário logado:', usuarioLogado);
+            return usuarioLogado.nome || usuarioLogado.name || nomePadrao;
         }
-        
-        // 4️⃣ Caso não encontre nada, retorna padrão
-        return 'Usuário';
+
+        console.log('Nenhum usuário logado');
+        return nomePadrao;
     };
 
     if (showTickets) {
@@ -102,7 +94,7 @@ const Home = () => {
                 >
                     <MdOutlineNewReleases className="button-icon" />
                     <div className="button-content">
-                        <span className="button-title">Novos Chamados</span>
+                        <span className="button-title">Em Andamento</span>
                         <span className="button-count">{ticketCounts.new}</span>
                     </div>
                 </button>

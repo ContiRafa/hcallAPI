@@ -17,3 +17,16 @@
 * Gráfico funcionando
 
 * Filtro do Gráfico comentado por enquanto para testes
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------//
+
+// QUANDO FOR PARA ATUALIZAR O PROJETO NA VPS BASTA: 
+
+1 - entrar na vps
+
+2 - var/www/html/hcallAPI02
+
+3 - dar um git pull para atualizar o repositorio
+
+//-----------------------------------------------------------------------------------------------------------------------------------//

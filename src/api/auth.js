@@ -20,6 +20,7 @@ const api_login = async (email, password) => {
         if (response.data.data.token) {
             console.log('Login bem-sucedido, token recebido');
             localStorage.setItem('@token', `Bearer ${response.data.data.token}`);
+            localStorage.setItem('usuario', JSON.stringify(response.data.data.user));
             return {
                 success: true,
                 data: response.data
