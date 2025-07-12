@@ -42,7 +42,7 @@ function Filters({ filtros, onFiltroChange }) {
                             onChange={(e) => onFiltroChange('status', e.target.value)}
                             className="filtro-input"
                         >
-                            <option value="">Selecione um status</option>
+                            <option value="">Todos</option>
                             <option value="pending">Pendente</option>
                             <option value="doing">Em Andamento</option>
                             <option value="conclued">Concluído</option>

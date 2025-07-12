@@ -211,8 +211,6 @@ const AccountCreate = () => {
                             </div>
                         </div>
                     </div>
-
-                    Campo Tipo de Usuário
                     <div className="form-group">
                         <label htmlFor="role">Tipo de Usuário</label>
                         <div className="group-input">
@@ -225,7 +223,7 @@ const AccountCreate = () => {
                                     checked={formData.role === 'admin'}
                                     onChange={handleInputChange}
                                 />
-                                Admin
+                                Administrador
                             </label>
                             <label htmlFor="user" style={{ marginLeft: '10px' }}>
                                 <input
@@ -236,7 +234,7 @@ const AccountCreate = () => {
                                     checked={formData.role === 'user'}
                                     onChange={handleInputChange}
                                 />
-                                User
+                                Usuário
                             </label>
                         </div>
                     </div>
